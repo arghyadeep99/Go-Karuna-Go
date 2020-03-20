@@ -13,7 +13,7 @@ logging.basicConfig(format=FORMAT, level=logging.DEBUG, filename='bot.log', file
 
 URL = 'https://www.mohfw.gov.in/'
 SHORT_HEADERS = ['SNo', 'State/UT','Indian','Foreigner','Cured','Dead']
-FILE = '/home/arghyadeep99/Desktop/Corona-Slack-Bot/corona_india_data.json'
+FILE = '/home/arghyadeep99/Desktop/Go-Karuna-Go/corona_india_data.json'
 
 contents = lambda row: [x.text.replace('\n', '') for x in row]
 
@@ -80,7 +80,7 @@ if __name__ == '__main__':
             # override the latest one now
             for state in cur_data:
                 prev_data[state]['latest'] = cur_data[state][current_time]
-                pre_data[state][current_time] = cur_data[state][current_time]
+                prev_data[state][current_time] = cur_data[state][current_time]
             save(prev_data)
 
             table = tabulate(stats, headers=SHORT_HEADERS, tablefmt='psql')
