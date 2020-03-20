@@ -16,7 +16,7 @@
 
 ---
 
-<h2>Motivation:</h2> (Inspired by Rachit Jain)
+<h2>Motivation (Inspired by Rachit Jain):</h2> 
 
 It's quarantine phase in India and every CS enthusiast is determined to help in some technical way to fight this pandemic called Covid-19. Hence, it motivated me to try something in terms of chatbot to keep me updated about live changing numbers since different media channels show different count of patients. This chatbot fetches Corona patients data from official website of Government of India and returns information about the state-wise patients automatically in #random channel. 
 
