@@ -1,4 +1,4 @@
-<h1 align="center">🇮🇳 :robot: Go-Karuna, Karuna Go! 🦠:warning: </h1>
+<h1 align="center">🇮🇳 :robot: Go Karuna, Karuna Go! 🦠:warning: </h1>
 
 <div align="center">
 
