@@ -1,0 +1,3 @@
+tabulate
+requests
+beautifulsoup4
