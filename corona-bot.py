@@ -47,7 +47,7 @@ if __name__ == '__main__':
         for row in all_rows:
             stat = contents(row.find_all('td'))
             if stat:
-                if len(stat) == 5:
+                if len(stat) != 6:
                     # last row
                     stat = ['', *stat]
                     stats.append(stat)
