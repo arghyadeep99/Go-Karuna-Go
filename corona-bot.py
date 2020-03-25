@@ -11,7 +11,7 @@ from slack_client import slacker
 FORMAT = '[%(asctime)-15s] %(message)s'
 logging.basicConfig(format=FORMAT, level=logging.DEBUG, filename='bot.log', filemode='a') #Determining log entry format
 
-URL = 'https://www.mohfw.gov.in/'
+URL = 'https://www.mohfw.gov.in'
 SHORT_HEADERS = ['SNo', 'State/UT','Indian','Foreigner','Cured','Dead']
 FILE = '/home/arghyadeep99/Desktop/Go-Karuna-Go/corona_india_data.json'
 
@@ -39,19 +39,27 @@ if __name__ == '__main__':
 
     try:
         response = requests.get(URL).content
-        my_soup = BeautifulSoup(response, 'html.parser')
-        header = contents(my_soup.tr.find_all('th'))
-
+        bs = BeautifulSoup(response, 'html.parser')
+        table = bs.findAll(lambda tag: tag.name=='table' and tag.has_attr('class') and tag['class']=="table table-striped table-dark") 
+        #rows = table.findAll(lambda tag: tag.name=='tr')
+        #header = (bs.findChildren('table'))
+        #print(table)
         stats = []
-        all_rows = my_soup.find_all('tr')
+        all_rows = bs.find_all('tr')
         for row in all_rows:
             stat = contents(row.find_all('td'))
             if stat:
-                if len(stat) != 6:
+                if len(stat) < 5:
+                    try:
+                        stats.remove(stat)
+                    except:
+                        continue
+                if len(stat) == 5:
                     # last row
+                    stat[0] = 'Total confirmed cases'
                     stat = ['', *stat]
                     stats.append(stat)
-                elif any([s.lower() in stat[1].lower() for s in req_states]):
+                elif len(stat) == 6 and any([s.lower() in stat[1].lower() for s in req_states]):
                     stats.append(stat)
 
         prev_data = load()
@@ -60,8 +68,8 @@ if __name__ == '__main__':
         flag = False #flag to indicate if data has been changed
 
         for state in cur_data:
-            if state not in prev_data:
-                info.append(f'New State {state} is hit by Corona Virus! :( :- {cur_data[state][current_time]}')
+            if state not in prev_data and state != 'Total confirmed cases':
+                info.append(f'New State {state} is hit by Corona Virus: {cur_data[state][current_time]}')
                 prev_data[state] = {}
                 flag = True
             else:
