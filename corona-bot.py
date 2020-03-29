@@ -4,15 +4,15 @@ import requests
 import argparse #parsing arguments so that we get flags like --help, etc. 
 import logging #For beautifying the error and warning handling
 from bs4 import BeautifulSoup #for scraping website from government website 
-from tabulate import tabulate
-from prettytable import PrettyTable #for tabular display of data from the government website 
+from tabulate import tabulate #for tabular display of data from the government website 
+#from prettytable import PrettyTable 
 from slack_client import slacker 
 
 FORMAT = '[%(asctime)-15s] %(message)s'
 logging.basicConfig(format=FORMAT, level=logging.DEBUG, filename='bot.log', filemode='a') #Determining log entry format
 
 URL = 'https://www.mohfw.gov.in'
-SHORT_HEADERS = ['SNo', 'State/UT','Indian','Foreigner','Cured','Dead']
+SHORT_HEADERS = ['SNo', 'State/UT','Total Cases','Cured','Dead']
 FILE = '/home/arghyadeep99/Desktop/Go-Karuna-Go/corona_india_data.json'
 
 contents = lambda row: [x.text.replace('\n', '') for x in row]
@@ -49,17 +49,17 @@ if __name__ == '__main__':
         for row in all_rows:
             stat = contents(row.find_all('td'))
             if stat:
-                if len(stat) < 5:
+                if len(stat) < 4:
                     try:
                         stats.remove(stat)
                     except:
                         continue
-                if len(stat) == 5:
+                elif len(stat) == 4:
                     # last row
                     stat[0] = 'Total confirmed cases'
                     stat = ['', *stat]
                     stats.append(stat)
-                elif len(stat) == 6 and any([s.lower() in stat[1].lower() for s in req_states]):
+                elif len(stat) == 5 and any([s.lower() in stat[1].lower() for s in req_states]):
                     stats.append(stat)
 
         prev_data = load()
@@ -92,7 +92,7 @@ if __name__ == '__main__':
             save(prev_data)
 
             table = tabulate(stats, headers=SHORT_HEADERS, tablefmt='psql')
-            slack_text = f'Current Corona Virus Pandemic Status in India: \n(Format is [Indian, Foreigner, Cured, Dead]):\n{events_info}\n```{table}```'
+            slack_text = f'Current Corona Virus Pandemic Status in India: \n(Format is [Total confirmed cases, Cured, Dead]):\n{events_info}\n```{table}```'
             slacker()(slack_text)
         print(cur_data)
         print("Success!")
