@@ -90,6 +90,7 @@ This project was done `in my quarantine time as a concerned citizen of India, wi
 
 <h3 align="center"><b>Developed with :heart: by: </b></h3>
 <div align="center">
+	
 <table>  
   <tr>
 <td>
@@ -105,4 +106,6 @@ This project was done `in my quarantine time as a concerned citizen of India, wi
 </td>
 </tr>
 </table>
+<br>
+
 </div>
