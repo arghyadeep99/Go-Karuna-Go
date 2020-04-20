@@ -88,10 +88,10 @@ This project was done `in my quarantine time as a concerned citizen of India, wi
 
 ---
 
-<h3><b>Developed with :heart: by: </b></h3>
+<h3 align="center"><b>Developed with :heart: by: </b></h3>
 <table>  
   <tr>
-<td>
+<td><center>
   <img src="https://avatars3.githubusercontent.com/u/33197180?s=150&v=4"/>
      
      Arghyadeep Das
@@ -101,6 +101,6 @@ This project was done `in my quarantine time as a concerned citizen of India, wi
 <a href = "https://twitter.com/arghyadeepdas99"><img src = "https://www.shareicon.net/download/2016/07/06/107115_media.svg" width="36" height="36"/></a>
 <a href = "https://www.linkedin.com/in/arghyadeep-das/"><img src = "http://www.iconninja.com/files/863/607/751/network-linkedin-social-connection-circular-circle-media-icon.svg" width="36" height="36"/></a>
 </p>
-</td>
+</td></center>
 </tr>
 </table>
