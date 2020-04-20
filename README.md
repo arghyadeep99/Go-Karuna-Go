@@ -89,9 +89,8 @@ This project was done `in my quarantine time as a concerned citizen of India, wi
 ---
 
 <h3 align="center"><b>Developed with :heart: by: </b></h3>
-<div align="center">
 	
-<table>  
+<table style="border:1px solid black;margin-left:auto;margin-right:auto;">  
   <tr>
 <td>
   <img src="https://avatars3.githubusercontent.com/u/33197180?s=150&v=4"/>
@@ -106,6 +105,3 @@ This project was done `in my quarantine time as a concerned citizen of India, wi
 </td>
 </tr>
 </table>
-<br>
-
-</div>
